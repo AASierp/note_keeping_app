@@ -9,10 +9,10 @@ export function NoteList( { notes }: NoteListProps ){
     
     return(
     <>
-        {notes.map((note) => {
+        {notes.map((note, index) => {
         return(
             <div className="note-container" key={note.id}>
-                <NoteCard note={ note } />
+               {index+1}. <NoteCard note={ note } />
             </div>
         )})}
     </>

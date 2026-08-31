@@ -6,5 +6,5 @@ export type Note = {
     title: string,
     content: string,
     creationDate: string
-    tags?: string[]
+    tags?: string
 }

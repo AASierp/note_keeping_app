@@ -3,6 +3,7 @@ import './App.css'
 import { useState, useEffect } from 'react';
 import type { Note } from './types/Note';
 import { NoteList } from './components/NoteList';
+import { NoteForm } from './components/NoteForm';
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -28,14 +29,18 @@ function App() {
       }  
     }
     fetchData();
- },[])
+ },[notes])
 
  
 
     return(
-      <div>
-        <NoteList notes={notes}/>
-      </div>
+      <>
+        <div>
+          <NoteForm />
+          <NoteList notes={notes}/>
+        </div>
+      </>
+      
   )
 }
 
