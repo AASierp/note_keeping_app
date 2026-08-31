@@ -1,0 +1,72 @@
+{
+    "users": [
+        {"id": 1, "email": "aaron@example.com", "password": "password123"},
+        {"id": 2, "email": "caleb@example.com", "password": "password456"}
+    ],
+
+    "notes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "React Study Notes",
+      "content": "Review shared state, lifted state, and component composition.",
+      "creationDate": "2026-08-25",
+      "tags": ["school", "react"]
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "Grocery List",
+      "content": "Chicken, eggs, cheese, coffee, and vegetables.",
+      "creationDate": "2026-08-26",
+      "tags": ["personal"]
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "title": "Assessment Ideas",
+      "content": "Start with the data model, then build note CRUD before authentication.",
+      "creationDate": "2026-08-27",
+      "tags": ["school", "important"]
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "title": "Weekend Tasks",
+      "content": "Finish React work, clean the garage, and plan meals.",
+      "creationDate": "2026-08-28",
+      "tags": ["personal", "important"]
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "title": "Meeting Notes",
+      "content": "Review project milestones and discuss next week's work.",
+      "creationDate": "2026-08-24",
+      "tags": ["work"]
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "title": "TypeScript Review",
+      "content": "Practice interfaces, union types, typed events, and nullable state.",
+      "creationDate": "2026-08-25",
+      "tags": ["school", "typescript"]
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "title": "Project Tasks",
+      "content": "Fix validation, run tests, and update the README.",
+      "creationDate": "2026-08-27",
+      "tags": ["work", "important"]
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "title": "Random Thought",
+      "content": "A note without any tags to test the optional tag behavior.",
+      "creationDate": "2026-08-28"
+    }
+  ]
+}
