@@ -28,16 +28,23 @@ function App() {
         setErrorMessage(`Failed to fetch - ${errorMessage}`);
       }  
     }
+    
     fetchData();
- },[notes])
+ },[])
 
- 
+  function createNote(newNote: Note): void {
+    setNotes(prevNotes => [...prevNotes, newNote])
+  }
+
+  function deleteNote(delNote: Note): void {
+    setNotes(notes.filter(n => n.id !== delNote.id))
+  }
 
     return(
       <>
         <div>
-          <NoteForm />
-          <NoteList notes={notes}/>
+          <NoteForm createNote={createNote} notesLength={notes.length} />
+          <NoteList notes={notes} deleteNote={deleteNote} />
         </div>
       </>
       

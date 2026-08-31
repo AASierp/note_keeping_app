@@ -1,7 +1,12 @@
 import { useState } from "react";
 import type { Note } from "../types/Note";
 
-export function NoteForm(){
+interface NoteFormProps {
+    createNote: (note: Note) => void
+    notesLength: number
+}
+
+export function NoteForm({ createNote, notesLength }: NoteFormProps){
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -13,7 +18,7 @@ export function NoteForm(){
         event.preventDefault();
 
         const newNote: Note = {
-            id: 0,
+            id: notesLength+1,
             userId: 0,
             title: title,
             content: content,
@@ -33,6 +38,8 @@ export function NoteForm(){
                 setErrorMessage(`Failed to fetch - ${errorMessage}`)
                 return
             }
+
+            createNote(newNote)
 
             setTitle("");
             setContent("");
