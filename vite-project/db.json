@@ -1,17 +1,24 @@
 {
-    "users": [
-        {"id": 1, "email": "aaron@example.com", "password": "password123"},
-        {"id": 2, "email": "caleb@example.com", "password": "password456"}
-    ],
-
-    "notes": [
+  "users": [
+    {
+      "id": 1,
+      "email": "aaron@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "email": "caleb@example.com",
+      "password": "password456"
+    }
+  ],
+  "notes": [
     {
       "id": 1,
       "userId": 1,
       "title": "React Study Notes",
       "content": "Review shared state, lifted state, and component composition.",
       "creationDate": "2026-08-25",
-      "tags": ["school", "react"]
+      "tags": "school, react"
     },
     {
       "id": 2,
@@ -19,7 +26,7 @@
       "title": "Grocery List",
       "content": "Chicken, eggs, cheese, coffee, and vegetables.",
       "creationDate": "2026-08-26",
-      "tags": ["personal"]
+      "tags": "personal"
     },
     {
       "id": 3,
@@ -27,7 +34,7 @@
       "title": "Assessment Ideas",
       "content": "Start with the data model, then build note CRUD before authentication.",
       "creationDate": "2026-08-27",
-      "tags": ["school", "important"]
+      "tags": "school, important"
     },
     {
       "id": 4,
@@ -35,7 +42,7 @@
       "title": "Weekend Tasks",
       "content": "Finish React work, clean the garage, and plan meals.",
       "creationDate": "2026-08-28",
-      "tags": ["personal", "important"]
+      "tags": "personal, important"
     },
     {
       "id": 5,
@@ -43,7 +50,7 @@
       "title": "Meeting Notes",
       "content": "Review project milestones and discuss next week's work.",
       "creationDate": "2026-08-24",
-      "tags": ["work"]
+      "tags": "work"
     },
     {
       "id": 6,
@@ -51,7 +58,7 @@
       "title": "TypeScript Review",
       "content": "Practice interfaces, union types, typed events, and nullable state.",
       "creationDate": "2026-08-25",
-      "tags": ["school", "typescript"]
+      "tags": "school, typescript"
     },
     {
       "id": 7,
@@ -59,7 +66,7 @@
       "title": "Project Tasks",
       "content": "Fix validation, run tests, and update the README.",
       "creationDate": "2026-08-27",
-      "tags": ["work", "important"]
+      "tags": "work, important"
     },
     {
       "id": 8,
@@ -67,6 +74,30 @@
       "title": "Random Thought",
       "content": "A note without any tags to test the optional tag behavior.",
       "creationDate": "2026-08-28"
+    },
+    {
+      "id": 9,
+      "userId": 0,
+      "title": "notes",
+      "content": "notes",
+      "creationDate": "",
+      "tags": "notes"
+    },
+    {
+      "id": 10,
+      "userId": 0,
+      "title": "test",
+      "content": "test",
+      "creationDate": "",
+      "tags": "test"
+    },
+    {
+      "id": 11,
+      "userId": 0,
+      "title": "test-note",
+      "content": "test-note",
+      "creationDate": "",
+      "tags": "tag"
     }
   ]
 }
