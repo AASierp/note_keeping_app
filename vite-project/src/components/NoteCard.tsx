@@ -3,9 +3,10 @@ import type { Note } from "../types/Note";
 type NoteCardProps = {
     note: Note
     deleteNote: (note: Note) => void
+    selectNote: (note: Note | null) => void
 }
 
-export function NoteCard( { note, deleteNote }: NoteCardProps ){
+export function NoteCard( { note, deleteNote, selectNote }: NoteCardProps ){
 
     const deleteBackEndNote = async (noteId: number) => {
         try{
@@ -13,8 +14,6 @@ export function NoteCard( { note, deleteNote }: NoteCardProps ){
                 method: "DELETE",
                 headers: { "Content-Type": "application/json"},
             })
-            // console.log(response)
-            // console.log(response.json)
 
             return response.json()
         } catch(error) {
@@ -35,6 +34,7 @@ export function NoteCard( { note, deleteNote }: NoteCardProps ){
             <p>{note.creationDate}</p>
             <p>{note.tags}</p>
             <button onClick={() => {handleDelete(note)}}>Delete Note</button>
+            <button onClick={() => {selectNote(note)}}>Edit Note</button>
         </div>
   )
 }
