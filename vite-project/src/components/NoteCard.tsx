@@ -1,5 +1,4 @@
 import type { Note } from "../types/Note";
-import { NoteForm } from "./NoteForm";
 
 type NoteCardProps = {
     note: Note
