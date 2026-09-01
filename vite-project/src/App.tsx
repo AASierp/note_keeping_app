@@ -17,10 +17,10 @@ function App() {
       setErrorMessage("");
 
       try{
-      const response = await fetch("http://localhost:3001/notes");
-      if(!response.ok){
-        setErrorMessage(`Failed to fetch - ${errorMessage}`)
-        return
+        const response = await fetch("http://localhost:3001/notes");
+        if(!response.ok){
+          setErrorMessage(`Failed to fetch - ${errorMessage}`)
+          return
       }
       const data = await response.json();
       setNotes(data);
