@@ -63,8 +63,7 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
 
     return(
         <div>
-            {!editedNote
-            ? <form onSubmit = {handleSubmit}> {/* Create New Note */}
+            <form onSubmit = {handleSubmit}> {/* Create New Note */}
                 <fieldset>
                     <legend>Note Details</legend>
                     <label htmlFor="titleInput">Title</label>
@@ -76,19 +75,6 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
                     <button type="submit">Submit</button>
                 </fieldset>
             </form>
-            : <form onSubmit = {handleSubmit}> {/* Edit Note */}
-                <fieldset>
-                    <legend>Note Details</legend>
-                    <label htmlFor="titleInput">Title</label>
-                    <input id="titleInput" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-                    <label htmlFor="contentInput">Content</label>
-                    <input id="contentInput" type="text" value={content} onChange={(e) => setContent(e.target.value)}/>
-                    <label htmlFor="tagsInput">Tags</label>
-                    <input id="tagsInput" type="text" value={tags} onChange={(e)=> setTags(e.target.value)} />
-                    <button type="submit">Submit</button>
-                </fieldset>
-            </form>
-            }
         </div>
     )
 }
