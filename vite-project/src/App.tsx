@@ -1,14 +1,16 @@
 
 import './App.css'
 import { useState, useEffect } from 'react';
-import { type Note } from "./types/types.ts";
+import { type Note, type User } from "./types/types.ts";
 import { NoteList } from './components/NoteList';
 import { NoteForm } from './components/NoteForm';
 import { getData, deleteData } from './services/notesService';
+import { Landing } from './components/Landing.tsx'
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [editedNote, setEditedNote] = useState<Note | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
 
@@ -39,10 +41,27 @@ function App() {
     setEditedNote(note)
   }
 
+  function assignUser(user: User) {
+    setUser(user)
+  }
+
     return(
       <div>
-        <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} />
-        <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote}/>
+        {/* navbar component */}
+
+        {/* if logged in, need to also filter on logged in user*/}
+        {user
+        ? <>
+          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} />
+          <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote}/>
+        </>
+        : <>
+          <Landing assignUser={assignUser}/>
+        </>
+        }
+        
+        {/* if not logged in */}
+        {/* login/signup component */}
       </div>
   )
 }
