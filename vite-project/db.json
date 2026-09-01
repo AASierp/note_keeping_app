@@ -18,7 +18,7 @@
       "title": "React Study Notes",
       "content": "Review shared state, lifted state, and component composition.",
       "creationDate": "2026-08-25",
-      "tags": "school, react"
+      "tags": "school"
     },
     {
       "id": 2,
@@ -74,22 +74,6 @@
       "title": "Random Thought",
       "content": "A note without any tags to test the optional tag behavior.",
       "creationDate": "2026-08-28"
-    },
-    {
-      "id": 9,
-      "userId": 0,
-      "title": "11",
-      "content": "`",
-      "creationDate": "",
-      "tags": "1"
-    },
-    {
-      "id": 10,
-      "userId": 0,
-      "title": "we're",
-      "content": "so",
-      "creationDate": "",
-      "tags": "good"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Note } from "../types/Note";
 import { useEffect } from 'react'
+import { postData, putData } from "../services/notesService";
 
 interface NoteFormProps {
     createNote: (note: Note) => void
@@ -15,7 +16,7 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [tags, setTags] = useState("");
-    const [errorMessage, setErrorMessage] = useState("")
+    
 
 
     useEffect(() => {
@@ -42,29 +43,26 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
                 creationDate: "",
                 tags: tags
             } 
-            setErrorMessage("");
 
-            try{
-                const response = await fetch("http://localhost:3001/notes", {
-                method: "POST",
-                headers: { "Content-Type": "application/json"},
-                body: JSON.stringify(newNote)
-            })
+            // try{
+            //     const response = await fetch("http://localhost:3001/notes", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json"},
+            //     body: JSON.stringify(newNote)
+            // })
 
-                if(!response){
-                    setErrorMessage(`Failed to fetch - ${errorMessage}`)
-                    return
-                }
+            //     if(!response){
+            //         setErrorMessage(`Failed to fetch - ${errorMessage}`)
+            //         return
+            //     }
 
+                postData(newNote)
                 createNote(newNote)
 
                 setTitle("");
                 setContent("");
                 setTags("");
 
-                }catch(error){
-                    setErrorMessage(`Failed to fetch - ${errorMessage}`);
-                }  
         } else { // if editedNote is not null, then change to updateNote functions, finally selectNote = null
             const tempNote: Note = {
                 id: editedNote.id,
@@ -74,20 +72,20 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
                 creationDate: editedNote.creationDate,
                 tags: tags
             } 
-            setErrorMessage("");
+            
 
-            try{
-            const response = await fetch(`http://localhost:3001/notes/${editedNote.id}`, {
-                method: "PUT",
-                headers: {"Content-Type": "Application/json"},
-                body: JSON.stringify(tempNote)
-            })
+            // try{
+            // const response = await fetch(`http://localhost:3001/notes/${editedNote.id}`, {
+            //     method: "PUT",
+            //     headers: {"Content-Type": "Application/json"},
+            //     body: JSON.stringify(tempNote)
+            // })
 
-            if(!response){
-                setErrorMessage(`Failed to update - ${errorMessage}`)
-                return
-            }
-
+            // if(!response){
+            //     setErrorMessage(`Failed to update - ${errorMessage}`)
+            //     return
+            // }
+            putData(tempNote)
             updateNote(tempNote)
 
             setTitle("");
@@ -95,9 +93,6 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
             setTags("");
             selectNote(null);
 
-            } catch{
-                setErrorMessage(`Failed to update - ${errorMessage}`);
-            }
         }
     }
 

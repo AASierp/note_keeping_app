@@ -8,23 +8,25 @@ type NoteCardProps = {
 
 export function NoteCard( { note, deleteNote, selectNote }: NoteCardProps ){
 
-    const deleteBackEndNote = async (noteId: number) => {
-        try{
-            const response = await fetch(`http://localhost:3001/notes/${noteId}`, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json"},
-            })
+    // const deleteBackEndNote = async (noteId: number) => {
+    //     try{
+    //         const response = await fetch(`http://localhost:3001/notes/${noteId}`, {
+    //             method: "DELETE",
+    //             headers: { "Content-Type": "application/json"},
+    //         })
 
-            return response.json()
-        } catch(error) {
-            console.log(error)
-        }  
-    }
+    //         return response.json()
+    //     } catch(error) {
+    //         console.log(error)
+    //     }  
+    //}
 
-    function handleDelete(note: Note): void {
-        deleteNote(note)
-        deleteBackEndNote(note.id)
-    }
+    //deleteData(note.id)
+
+    // function handleDelete(note: Note): void {
+    //     deleteNote(note)
+    //     deleteData(note.id)
+    // }
 
     return(
      
@@ -33,7 +35,7 @@ export function NoteCard( { note, deleteNote, selectNote }: NoteCardProps ){
             <p>{note.content}</p>
             <p>{note.creationDate}</p>
             <p>{note.tags}</p>
-            <button onClick={() => {handleDelete(note)}}>Delete Note</button>
+            <button onClick={() => {deleteNote(note)}}>Delete Note</button>
             <button onClick={() => {selectNote(note)}}>Edit Note</button>
         </div>
   )
