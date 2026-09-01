@@ -8,6 +8,7 @@ import { NoteForm } from './components/NoteForm';
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [editedNote, setEditedNote] = useState<Note | null>(null);
   //const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -40,11 +41,15 @@ function App() {
     setNotes(notes.filter(n => n.id !== delNote.id))
   }
 
+  function updateNote(editedNote: Note): void{
+    setNotes(notes.filter(n => n.id === editedNote.id ))
+  }
+
     return(
       <>
         <div>
-          <NoteForm createNote={createNote} notesLength={notes.length} />
-          <NoteList notes={notes} deleteNote={deleteNote} />
+          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} />
+          <NoteList notes={notes} deleteNote={deleteNote} updateNote={updateNote} />
         </div>
       </>
       

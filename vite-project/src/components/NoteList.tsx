@@ -4,16 +4,17 @@ import type { Note } from "../types/Note";
 type NoteListProps = {
     notes: Note[]
     deleteNote: (note: Note) => void
+    updateNote: (note: Note) => void
 }
 
-export function NoteList( { notes, deleteNote }: NoteListProps ){
+export function NoteList( { notes, deleteNote, updateNote }: NoteListProps ){
     
     return(
     <>
         {notes.map((note, index) => {
         return(
             <div className="note-container" key={note.id}>
-               {index+1}. <NoteCard note={ note } deleteNote={deleteNote}/>
+               {index+1}. <NoteCard note={ note } deleteNote={deleteNote} updateNote={updateNote}/>
             </div>
         )})}
     </>

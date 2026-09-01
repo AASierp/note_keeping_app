@@ -4,6 +4,8 @@ import type { Note } from "../types/Note";
 interface NoteFormProps {
     createNote: (note: Note) => void
     notesLength: number
+    editedNote: Note | null
+    updateNote: (note: Note) => void
 }
 
 export function NoteForm({ createNote, notesLength }: NoteFormProps){
