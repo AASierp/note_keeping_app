@@ -42,14 +42,22 @@ function App() {
   }
 
   function updateNote(editedNote: Note): void{
-    setNotes(notes.filter(n => n.id === editedNote.id ))
+    const updatedNotes = notes.map(n => n.id === editedNote.id ? editedNote : n)
+
+    // console.log(updatedNotes)
+    // console.log(notes)
+    setNotes(updatedNotes)
+  }
+
+  function selectNote(note: Note | null): void {
+    setEditedNote(note)
   }
 
     return(
       <>
         <div>
-          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} />
-          <NoteList notes={notes} deleteNote={deleteNote} updateNote={updateNote} />
+          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} />
+          <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote}/>
         </div>
       </>
       
