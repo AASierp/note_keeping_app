@@ -1,23 +1,13 @@
 import { useState } from "react";
-import type { Note } from "../types/Note";
 import { useEffect } from 'react'
 import { postData, putData } from "../services/notesService";
-
-interface NoteFormProps {
-    createNote: (note: Note) => void
-    notesLength: number
-    editedNote: Note | null
-    updateNote: (note: Note) => void
-    selectNote: (note: Note | null) => void
-}
+import type { Note, NoteFormProps } from "../types/types.ts";
 
 export function NoteForm({ createNote, notesLength, editedNote, updateNote, selectNote }: NoteFormProps){
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [tags, setTags] = useState("");
-    
-
 
     useEffect(() => {
         if (editedNote) {
@@ -44,18 +34,6 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
                 tags: tags
             } 
 
-            // try{
-            //     const response = await fetch("http://localhost:3001/notes", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json"},
-            //     body: JSON.stringify(newNote)
-            // })
-
-            //     if(!response){
-            //         setErrorMessage(`Failed to fetch - ${errorMessage}`)
-            //         return
-            //     }
-
                 postData(newNote)
                 createNote(newNote)
 
@@ -73,18 +51,6 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
                 tags: tags
             } 
             
-
-            // try{
-            // const response = await fetch(`http://localhost:3001/notes/${editedNote.id}`, {
-            //     method: "PUT",
-            //     headers: {"Content-Type": "Application/json"},
-            //     body: JSON.stringify(tempNote)
-            // })
-
-            // if(!response){
-            //     setErrorMessage(`Failed to update - ${errorMessage}`)
-            //     return
-            // }
             putData(tempNote)
             updateNote(tempNote)
 
@@ -92,7 +58,6 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
             setContent("");
             setTags("");
             selectNote(null);
-
         }
     }
 

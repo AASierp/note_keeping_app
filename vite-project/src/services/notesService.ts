@@ -1,23 +1,24 @@
-    import type { Note } from "../types/Note";
+    import type { Note } from "../types/types.ts";
 
     export async function getData(): Promise<Note[]> {
-
       try{
         const response = await fetch("http://localhost:3001/notes");
         if(!response.ok){
           console.error(`Failed to fetch`)
           return []
         }
+        
         const data: Note[] = await response.json();
         return data
-        }catch(error){
+        } catch(error){
             console.error(`Failed to get data`);
         }
+
         return [];
     }
 
-    export  async function postData(newnote: Note){
-        try{
+    export async function postData(newnote: Note){
+        try {
                 const response = await fetch("http://localhost:3001/notes", {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
@@ -28,13 +29,13 @@
                 console.log(`Failed to post data`)
                 return
             }
-            }catch{
+            } catch{
               console.log(`Failed to post data`)
             }
         }
 
     export async function putData(tempnote: Note){
-         try{
+         try {
             const response = await fetch(`http://localhost:3001/notes/${tempnote.id}`, {
                 method: "PUT",
                 headers: {"Content-Type": "Application/json"},
@@ -46,13 +47,13 @@
                 return
             }
 
-         }catch{
+         } catch{
             console.error(`Failed to update Data`)
          }
     }
 
     export const deleteData = async (noteId: number) => {
-        try{
+        try {
             const response = await fetch(`http://localhost:3001/notes/${noteId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json"},
