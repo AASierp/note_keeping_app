@@ -56,7 +56,7 @@ function App() {
   }
 
     return(
-      <div>
+      <div className='bg-slate-500 min-h-screen'>
         <NavBar user={user} logOut={logOut} editFlag={editFlag}/>
 
         {user && !editUser

@@ -117,24 +117,24 @@ export function Landing({ assignUser, editUser, editFlag }: LandingProps) {
     }
 
     return(
-        <div>
+        <div className='flex justify-center items-center bg-slate-500 text-white min-h-screen'>
             <form onSubmit = {handleSubmit}>
-                <fieldset>
+                <fieldset className='flex flex-col p-4 border-2 border-slate-50 text-center'>
                     {editUser
-                    ? <legend>Edit Details</legend>
-                    : <legend>Login / Sign-up</legend>
+                    ? <legend >Edit Details</legend>
+                    : <legend >Login / Sign-up</legend>
                     }
                     <label htmlFor="emailInput">Email</label>
-                    <input id="emailInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input className="text-black bg-amber-50 m-1" id="emailInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <label htmlFor="passwordInput">Password</label>
-                    <input id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input className='text-black bg-amber-50 m-1' id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     {editUser
                     ? <>
                         <button type="submit" onClick={onUpdate}>Save</button>
                     </>
                     : <>
-                        <button type="submit" onClick={onLogin}>Login</button>
-                        <button type="submit" onClick={onSignup}>Sign-up</button>
+                        <button className="m-2 px-3 bg-blue-900 rounded-lg border-2 border-amber-50 hover:bg-blue-400" type="submit" onClick={onLogin}>Login</button>
+                        <button className="m-2 px-3  bg-blue-900 rounded-lg border-2 border-amber-50 hover:bg-blue-400" type="submit" onClick={onSignup}>Sign-up</button>
                     </>
                     }
                 </fieldset>
