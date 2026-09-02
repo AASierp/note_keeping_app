@@ -62,20 +62,20 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
     }
 
     return(
-        <div>
+        <div className="text-amber-50">
             <form onSubmit = {handleSubmit}> {/* Create New Note */}
-                <fieldset>
+                <fieldset className="flex items-center py-1 justify-evenly border-2">
                     {editedNote
                     ? <legend>Edit Note</legend>
-                    : <legend>Create a Note</legend>
+                    : <legend className="text-center">Create a Note</legend>
                     }
                     <label htmlFor="titleInput">Title</label>
-                    <input id="titleInput" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input className="bg-amber-50 m-1" id="titleInput" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <label htmlFor="contentInput">Content</label>
-                    <input id="contentInput" type="text" value={content} onChange={(e) => setContent(e.target.value)}/>
+                    <input className="bg-amber-50 m-1" id="contentInput" type="text" value={content} onChange={(e) => setContent(e.target.value)}/>
                     <label htmlFor="tagsInput">Tags</label>
-                    <input id="tagsInput" type="text" value={tags} onChange={(e)=> setTags(e.target.value)} />
-                    <button type="submit">Submit</button>
+                    <input className="bg-amber-50 m-1" id="tagsInput" type="text" value={tags} onChange={(e)=> setTags(e.target.value)} />
+                    <button className="m-2 px-3 bg-blue-900 rounded-lg border-2 border-amber-50 hover:bg-blue-400 text-white" type="submit">Submit</button>
                 </fieldset>
             </form>
         </div>

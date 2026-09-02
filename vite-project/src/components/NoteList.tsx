@@ -43,25 +43,26 @@ export function NoteList( { notes, deleteNote, selectNote, user }: NoteListProps
                     ))}
                 </select>
             </div>
-
-            {selectedTag === 'Tag Filter'
-            ? <>
-                {userNotes.map((note, index) => {
-                return(
-                    <div className="note-container" key={note.id}>
-                    {index+1}. <NoteCard note={ note } deleteNote={deleteNote} selectNote={selectNote} />
-                    </div>
-                )})}
-            </>
-            : <>
-                {filteredNotes.map((note, index) => {
-                return(
-                    <div className="note-container" key={note.id}>
-                    {index+1}. <NoteCard note={ note } deleteNote={deleteNote} selectNote={selectNote} />
-                    </div>
-                )})}
-            </>
-            }
+            <div className="m-2 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {selectedTag === 'Tag Filter'
+                ? <>
+                    {userNotes.map((note) => {
+                    return(
+                        <div className="note-container" key={note.id}>
+                        <NoteCard note={ note } deleteNote={deleteNote} selectNote={selectNote} />
+                        </div>
+                    )})}
+                </>
+                : <>
+                    {filteredNotes.map((note) => {
+                    return(
+                        <div className="note-container" key={note.id}>
+                        <NoteCard note={ note } deleteNote={deleteNote} selectNote={selectNote} />
+                        </div>
+                    )})}
+                </>
+                }
+            </div>
         </div>
     )
 }

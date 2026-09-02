@@ -49,6 +49,7 @@ function App() {
 
   function logOut(){
     setUser(null);
+    setEditUser(null)
   }
 
   function editFlag(user: User | null) {
