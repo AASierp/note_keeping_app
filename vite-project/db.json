@@ -73,7 +73,8 @@
       "userId": 2,
       "title": "Random Thought",
       "content": "A note without any tags to test the optional tag behavior.",
-      "creationDate": "2026-08-28"
+      "creationDate": "2026-08-28",
+      "tags": "work, important"
     }
   ]
 }

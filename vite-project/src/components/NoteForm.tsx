@@ -65,7 +65,10 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
         <div>
             <form onSubmit = {handleSubmit}> {/* Create New Note */}
                 <fieldset>
-                    <legend>Note Details</legend>
+                    {editedNote
+                    ? <legend>Edit Note</legend>
+                    : <legend>Create a Note</legend>
+                    }
                     <label htmlFor="titleInput">Title</label>
                     <input id="titleInput" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <label htmlFor="contentInput">Content</label>
