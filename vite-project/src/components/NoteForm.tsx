@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { postData, putData } from "../services/notesService";
 import type { Note, NoteFormProps } from "../types/types.ts";
 
-export function NoteForm({ createNote, notesLength, editedNote, updateNote, selectNote }: NoteFormProps){
+export function NoteForm({ createNote, notesLength, editedNote, updateNote, selectNote, user }: NoteFormProps){
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -27,7 +27,7 @@ export function NoteForm({ createNote, notesLength, editedNote, updateNote, sele
         if (!editedNote) {
             const newNote: Note = {
                 id: notesLength+1,
-                userId: 0,
+                userId: user.id,
                 title: title,
                 content: content,
                 creationDate: "",

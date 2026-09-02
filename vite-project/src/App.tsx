@@ -41,9 +41,14 @@ function App() {
     setEditedNote(note)
   }
 
-  function assignUser(user: User) {
+  function assignUser(user: User | null) {
     setUser(user)
   }
+
+  function logOut(){
+    setUser(null);
+  }
+
 
     return(
       <div>
@@ -52,8 +57,9 @@ function App() {
         {/* if logged in, need to also filter on logged in user*/}
         {user
         ? <>
-          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} />
-          <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote}/>
+          <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} user={user} />
+          <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote} user = {user}/>
+          <button onClick={logOut}>Log Out</button>
         </>
         : <>
           <Landing assignUser={assignUser}/>

@@ -30,8 +30,13 @@ export function Landing({ assignUser }: LandingProps) {
         return isValid
     }
 
-    function onLogin() {
-        
+    async function onLogin() {
+
+        const users = await getUsers()
+        const user = users.find((u) => u.email === email && u.password === password);
+        if (user){
+            assignUser(user);
+        }
     }
 
     async function onSignup() {
@@ -61,7 +66,7 @@ export function Landing({ assignUser }: LandingProps) {
         }
         else {
             // post new User
-            postUser(newUser)
+            await postUser(newUser)
             // set user to newUser
             assignUser(newUser)
             // update exists to false for next time
@@ -76,10 +81,10 @@ export function Landing({ assignUser }: LandingProps) {
         <form onSubmit = {handleSubmit}> {/* Create New Note */}
             <fieldset>
                 <legend>Login / Sign-up</legend>
-                <label htmlFor="email">Email</label>
-                <input id="titleInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="contentInput">Password</label>
-                <input id="contentInput" type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <label htmlFor="emailInput">Email</label>
+                <input id="emailInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label htmlFor="passwordInput">Password</label>
+                <input id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <button type="submit" onClick={onLogin}>Login</button>
                 <button type="submit" onClick={onSignup}>Sign-up</button>
             </fieldset>

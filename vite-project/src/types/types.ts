@@ -25,10 +25,12 @@ export interface NoteFormProps {
     editedNote: Note | null
     updateNote: (note: Note) => void
     selectNote: (note: Note | null) => void
+    user: User
 }
 
 export type NoteListProps = {
     notes: Note[]
     deleteNote: (note: Note) => void
     selectNote: (note: Note | null) => void
+    user: User
 }
