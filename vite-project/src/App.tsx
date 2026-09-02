@@ -6,11 +6,13 @@ import { NoteList } from './components/NoteList';
 import { NoteForm } from './components/NoteForm';
 import { getData, deleteData } from './services/notesService';
 import { Landing } from './components/Landing.tsx'
+import { NavBar } from './components/NavBar.tsx'
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [editedNote, setEditedNote] = useState<Note | null>(null);
   const [user, setUser] = useState<User | null>(null);
+  const [editUser, setEditUser] = useState<User | null>(null)
 
   useEffect(() => {
 
@@ -49,25 +51,23 @@ function App() {
     setUser(null);
   }
 
+  function editFlag(user: User | null) {
+    setEditUser(user)
+  }
 
     return(
       <div>
-        {/* navbar component */}
+        <NavBar user={user} logOut={logOut} editFlag={editFlag}/>
 
-        {/* if logged in, need to also filter on logged in user*/}
-        {user
+        {user && !editUser
         ? <>
           <NoteForm createNote={createNote} notesLength={notes.length} editedNote = {editedNote} updateNote={updateNote} selectNote={selectNote} user={user} />
           <NoteList notes={notes} deleteNote={deleteNote} selectNote={selectNote} user = {user}/>
-          <button onClick={logOut}>Log Out</button>
         </>
         : <>
-          <Landing assignUser={assignUser}/>
+          <Landing assignUser={assignUser} editUser={editUser} editFlag={editFlag} />
         </>
         }
-        
-        {/* if not logged in */}
-        {/* login/signup component */}
       </div>
   )
 }

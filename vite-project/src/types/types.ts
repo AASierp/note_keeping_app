@@ -34,3 +34,15 @@ export type NoteListProps = {
     selectNote: (note: Note | null) => void
     user: User
 }
+
+export interface NavBarProps {
+    user: User | null
+    logOut: () => void
+    editFlag: (user: User | null) => void
+}
+
+export interface LandingProps {
+    assignUser: (user: User | null) => void
+    editUser: User | null
+    editFlag: (user: User | null) => void
+}

@@ -1,11 +1,8 @@
 import { useState } from 'react'
-import { type User } from '../types/types.ts'
-import { getUsers, postUser } from '../services/usersService.ts'
+import { type User, type LandingProps } from '../types/types.ts'
+import { getUsers, postUser, putUser } from '../services/usersService.ts'
 
-interface LandingProps {
-    assignUser: (user: User | null) => void
-}
-export function Landing({ assignUser }: LandingProps) {
+export function Landing({ assignUser, editUser, editFlag }: LandingProps) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     let exists: boolean = false
@@ -13,7 +10,6 @@ export function Landing({ assignUser }: LandingProps) {
 
     function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault()
-        console.log("submit")
     }
 
     function validateInputs(): boolean {
@@ -74,25 +70,75 @@ export function Landing({ assignUser }: LandingProps) {
         }
     }
 
+    async function onUpdate() {
+        if (!editUser) {
+            return
+        }
+
+        if (!validateInputs()) {
+            editFlag(null)
+            return
+        }
+
+        // create user object
+        const newUser: User = {
+            id: editUser.id,
+            email: email,
+            password: password
+        }
+
+        // get users
+        const users = await getUsers()
+
+        // check if user exists
+        users.forEach((u: User) => {
+            if ((u.email.toLowerCase().trim() === newUser.email.toLowerCase().trim()) && (u.id !== newUser.id)) {
+                exists = true
+            }
+        })
+
+        // check if same password and same email
+        if ((editUser.email.toLowerCase().trim() === newUser.email.toLowerCase().trim()) &&(editUser.password.trim() === newUser.password.trim())) {
+            exists = true
+        }
+        
+        if (exists) {
+            console.log("This user already exists!")
+        }
+        else {
+            // update with newUser
+            await putUser(newUser)
+            // set user to newUser
+            assignUser(newUser)
+            // update exists to false for next time
+            exists = false 
+            editFlag(null)
+        }
+    }
+
     return(
         <div>
-        Login | Sign Up 
-
-        <form onSubmit = {handleSubmit}> {/* Create New Note */}
-            <fieldset>
-                <legend>Login / Sign-up</legend>
-                <label htmlFor="emailInput">Email</label>
-                <input id="emailInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="passwordInput">Password</label>
-                <input id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <button type="submit" onClick={onLogin}>Login</button>
-                <button type="submit" onClick={onSignup}>Sign-up</button>
-            </fieldset>
-        </form>
-
-        {/* Check if the password is correct for login */}
-        {/* check if username includes @ */}
-        {/* Hide password after we get it functional */}
+            <form onSubmit = {handleSubmit}>
+                <fieldset>
+                    {editUser
+                    ? <legend>Edit Details</legend>
+                    : <legend>Login / Sign-up</legend>
+                    }
+                    <label htmlFor="emailInput">Email</label>
+                    <input id="emailInput" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label htmlFor="passwordInput">Password</label>
+                    <input id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    {editUser
+                    ? <>
+                        <button type="submit" onClick={onUpdate}>Save</button>
+                    </>
+                    : <>
+                        <button type="submit" onClick={onLogin}>Login</button>
+                        <button type="submit" onClick={onSignup}>Sign-up</button>
+                    </>
+                    }
+                </fieldset>
+            </form>
         </div>
     )
 }
