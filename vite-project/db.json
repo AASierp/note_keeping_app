@@ -9,40 +9,31 @@
       "id": 2,
       "email": "caleb@example.com",
       "password": "password"
+    },
+    {
+      "id": 3,
+      "email": "test123@test.com",
+      "password": "password"
+    },
+    {
+      "id": 4,
+      "email": "jimbo@gmail.com",
+      "password": "password"
+    },
+    {
+      "email": "aaron@fake.com",
+      "password": "password",
+      "id": 11
     }
   ],
   "notes": [
     {
-      "id": 1,
-      "userId": 1,
-      "title": "React Study Notes",
-      "content": "Review shared state, lifted state, and component composition.",
-      "creationDate": "2026-08-25",
-      "tags": "school"
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "title": "Grocery List",
-      "content": "Chicken, eggs, cheese, coffee, and vegetables.",
-      "creationDate": "2026-08-26",
-      "tags": "personal"
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "title": "Assessment Ideas",
-      "content": "Start with the data model, then build note CRUD before authentication.",
-      "creationDate": "2026-08-27",
-      "tags": "school, important"
-    },
-    {
       "id": 4,
       "userId": 1,
-      "title": "Weekend Tasks",
+      "title": "Weekend",
       "content": "Finish React work, clean the garage, and plan meals.",
       "creationDate": "2026-08-28",
-      "tags": "personal, important"
+      "tags": "personal"
     },
     {
       "id": 5,
@@ -75,6 +66,14 @@
       "content": "A note without any tags to test the optional tag behavior.",
       "creationDate": "2026-08-28",
       "tags": "work, important"
+    },
+    {
+      "userId": 1,
+      "title": "sdfgsdgsdfgsdfgsdfg",
+      "content": "sfgsdfgsdfg",
+      "creationDate": "2026-09-21T15:47:27.884Z",
+      "tags": "sfgsdfgsd",
+      "id": 9
     }
   ]
 }
